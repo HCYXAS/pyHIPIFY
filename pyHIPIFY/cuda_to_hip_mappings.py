@@ -2254,45 +2254,45 @@ PYTORCH_SPECIFIC_MAPPINGS = collections.OrderedDict([
     ("cudaDeviceAllocator", ("hipDeviceAllocator", API_PYTORCH)),
     ("define MAX_NUM_BLOCKS 200", ("define MAX_NUM_BLOCKS 64", API_PYTORCH)),
 
-    ("cuda::CUDAGuard", ("hip::HIPGuardMasqueradingAsCUDA", API_PYTORCH)),
-    ("CUDAGuard", ("HIPGuardMasqueradingAsCUDA", API_PYTORCH)),
+    ("cuda::CUDAGuard", ("hip::HIPGuard", API_PYTORCH)),
+    ("CUDAGuard", ("HIPGuard", API_PYTORCH)),
 
-    ("cuda::OptionalCUDAGuard", ("hip::OptionalHIPGuardMasqueradingAsCUDA", API_PYTORCH)),
-    ("OptionalCUDAGuard", ("OptionalHIPGuardMasqueradingAsCUDA", API_PYTORCH)),
+    ("cuda::OptionalCUDAGuard", ("hip::OptionalHIPGuard", API_PYTORCH)),
+    ("OptionalCUDAGuard", ("OptionalHIPGuard", API_PYTORCH)),
 
-    ("cuda::CUDAStreamGuard", ("hip::HIPStreamGuardMasqueradingAsCUDA", API_PYTORCH)),
-    ("CUDAStreamGuard", ("HIPStreamGuardMasqueradingAsCUDA", API_PYTORCH)),
+    ("cuda::CUDAStreamGuard", ("hip::HIPStreamGuard", API_PYTORCH)),
+    ("CUDAStreamGuard", ("HIPStreamGuard", API_PYTORCH)),
 
-    ("cuda::OptionalCUDAStreamGuard", ("hip::OptionalHIPStreamGuardMasqueradingAsCUDA", API_PYTORCH)),
-    ("OptionalCUDAStreamGuard", ("OptionalHIPStreamGuardMasqueradingAsCUDA", API_PYTORCH)),
+    ("cuda::OptionalCUDAStreamGuard", ("hip::OptionalHIPStreamGuard", API_PYTORCH)),
+    ("OptionalCUDAStreamGuard", ("OptionalHIPStreamGuard", API_PYTORCH)),
 
     # Only get needs to be transformed this way; all the other ones can go
     # straight to the normal versions hip::HIPCachingAllocator
-    ("cuda::CUDACachingAllocator::get", ("hip::HIPCachingAllocatorMasqueradingAsCUDA::get", API_PYTORCH)),
-    ("CUDACachingAllocator::get", ("HIPCachingAllocatorMasqueradingAsCUDA::get", API_PYTORCH)),
-    ("cuda::CUDACachingAllocator::recordStream", ("hip::HIPCachingAllocatorMasqueradingAsCUDA::recordStreamMasqueradingAsCUDA", API_PYTORCH)),
-    ("CUDACachingAllocator::recordStream", ("HIPCachingAllocatorMasqueradingAsCUDA::recordStreamMasqueradingAsCUDA", API_PYTORCH)),
+    ("cuda::CUDACachingAllocator::get", ("hip::HIPCachingAllocator::get", API_PYTORCH)),
+    ("CUDACachingAllocator::get", ("HIPCachingAllocator::get", API_PYTORCH)),
+    ("cuda::CUDACachingAllocator::recordStream", ("hip::HIPCachingAllocator::recordStream", API_PYTORCH)),
+    ("CUDACachingAllocator::recordStream", ("HIPCachingAllocator::recordStream", API_PYTORCH)),
 
-    ("cuda::CUDAStream", ("hip::HIPStreamMasqueradingAsCUDA", API_PYTORCH)),
-    ("CUDAStream", ("HIPStreamMasqueradingAsCUDA", API_PYTORCH)),
+    ("cuda::CUDAStream", ("hip::HIPStream", API_PYTORCH)),
+    ("CUDAStream", ("HIPStream", API_PYTORCH)),
 
     ("cuda::getStreamFromPool", ("hip::getStreamFromPoolMasqueradingAsCUDA", API_PYTORCH)),
     ("getStreamFromPool", ("getStreamFromPoolMasqueradingAsCUDA", API_PYTORCH)),
 
-    ("cuda::getDefaultCUDAStream", ("hip::getDefaultHIPStreamMasqueradingAsCUDA", API_PYTORCH)),
-    ("getDefaultCUDAStream", ("getDefaultHIPStreamMasqueradingAsCUDA", API_PYTORCH)),
+    ("cuda::getDefaultCUDAStream", ("hip::getDefaultHIPStream", API_PYTORCH)),
+    ("getDefaultCUDAStream", ("getDefaultHIPStream", API_PYTORCH)),
 
-    ("cuda::getCurrentCUDAStream", ("hip::getCurrentHIPStreamMasqueradingAsCUDA", API_PYTORCH)),
-    ("getCurrentCUDAStream", ("getCurrentHIPStreamMasqueradingAsCUDA", API_PYTORCH)),
+    ("cuda::getCurrentCUDAStream", ("hip::getCurrentHIPStream", API_PYTORCH)),
+    ("getCurrentCUDAStream", ("getCurrentHIPStream", API_PYTORCH)),
 
-    ("cuda::setCurrentCUDAStream", ("hip::setCurrentHIPStreamMasqueradingAsCUDA", API_PYTORCH)),
-    ("setCurrentCUDAStream", ("setCurrentHIPStreamMasqueradingAsCUDA", API_PYTORCH)),
+    ("cuda::setCurrentCUDAStream", ("hip::setCurrentHIPStream", API_PYTORCH)),
+    ("setCurrentCUDAStream", ("setCurrentHIPStream", API_PYTORCH)),
 
     # TODO: Undo this special-case; see the header for motivation behind this
     # hack.  It's VERY important this is only applied to PyTorch HIPify.
-    ("c10/cuda/CUDAGuard.h", ("ATen/hip/impl/HIPGuardImplMasqueradingAsCUDA.h", API_PYTORCH)),
-    ("c10/cuda/CUDACachingAllocator.h", ("ATen/hip/impl/HIPCachingAllocatorMasqueradingAsCUDA.h", API_PYTORCH)),
-    ("c10/cuda/CUDAStream.h", ("ATen/hip/impl/HIPStreamMasqueradingAsCUDA.h", API_PYTORCH)),
+    ("c10/cuda/CUDAGuard.h", ("c10/hip/HIPGuard.h", API_PYTORCH)),
+    ("c10/cuda/CUDACachingAllocator.h", ("c10/hip/HIPCachingAllocator.h", API_PYTORCH)),
+    ("c10/cuda/CUDAStream.h", ("c10/hip/HIPStream.h", API_PYTORCH)),
     ("gloo/cuda.h", ("gloo/hip.h", API_PYTORCH)),
     ("gloo/cuda_allreduce_halving_doubling.h", ("gloo/hip_allreduce_halving_doubling.h", API_PYTORCH)),
     ("gloo/cuda_allreduce_halving_doubling_pipelined.h", ("gloo/hip_allreduce_halving_doubling_pipelined.h", API_PYTORCH)),
